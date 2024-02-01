@@ -71,12 +71,12 @@ const makeVehicle = (name, seats) => {
   }
 }
 
-const myCar = makeCar('benmobile', 5);
+const myCar = makeVehicle('benmobile', 5);
 myCar.addPassenger('ben');
 myCar.addPassenger('gonzalo');
 const myPassengers = myCar.getPassengers(); // ['ben', 'gonzalo']
 
-const batmansCar = makeCar('batmobile', 1);
+const batmansCar = makeVehicle('batmobile', 1);
 batmansCar.addPassenger('batman');
 batmansCar.addPassenger('catwoman'); // not enough room
 batmansCar.sound = 'ZOOOM'; // instance properties can be accessed/modified
@@ -147,32 +147,9 @@ console.log(ben.validatePassword('blah')); // true
 
 > **Note:** The Chrome DevTools console will display private instance properties when you print them. This does NOT mean that those properties are now public. It is similar to how logged promises will show the fulfilled value.
 
-# Challenge
-
-## Library Class
-
-### Instructions:
-
-### Private Properties:
-
-* Utilize private properties using the # notation for encapsulation.
-Public Properties:
-
-### Include public properties:
-
-* name: the name of the library.
-  * location: the location of the library.
-  * books: an array to store book objects.
-
-### Methods:
-
-* Implement an instance method addBook(title, author, genre) that adds a book to the library. Each book should have a unique ID.
-* Implement an instance method removeBook(bookID) that removes a book from the library based on its ID.
-* Implement an instance method listBooks() that logs information about all books in the library.
-* Implement a static method generateLibraryName() that generates a random library name.
+## Challenge: Make a Library and Book Class
 
 ```js
-
 const cityLibrary = new Library('City Library', '123 Main St');
 
 // Adding books to the library
@@ -190,7 +167,10 @@ cityLibrary.removeBook(2);
 cityLibrary.listBooks();
 
 ```
-Additional Notes:
-* Use a private method for generating unique book IDs.
-* Feel free to add any additional methods or properties that you think would enhance the functionality of the Library class.
-* Ensure that the methods access and manipulate private properties where necessary for encapsulation.
+Notes:
+* `Book` should be a class with a private `#id` instance property and public `title`, `author`, and `genre` instance properties.
+* `Book` instances should have a `getId` method that returns the private `#id` instance property.
+* `Library` should be a class with a private `#books` instance property. It should be an empty array to start.
+* `Library` instances should have an `addBook`, `listBooks`, and `removeBook` method.
+* Bonus: The `Library` class should have a `static #allLibraries` private class property. It should be an empty array to start.
+* Bonus: The `Library` class should have a `static list()` method that returns all `Library` instances.
